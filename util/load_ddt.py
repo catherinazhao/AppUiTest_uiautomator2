@@ -16,7 +16,7 @@ class LoadDDT(object):
 
 	def load_test_data(self, data_file):
 		""" 返回依赖的测试用例内容 """
-		self.open_file()
+		self.open_file(data_file)
 		data_list = []
 		for key, value in self.datas.items():
 			pat = re.compile(PATTERN)
@@ -26,8 +26,9 @@ class LoadDDT(object):
 		return data_list
 
 	""" 读取测试数据文件 """
-	def open_file(self):
-		with open(self.file, 'r', encoding='utf-8') as f:
+	def open_file(self, file):
+		print(file)
+		with open(file, 'r', encoding='utf-8') as f:
 			for line in f.readlines():
 				if line.startswith("#"):
 					continue
